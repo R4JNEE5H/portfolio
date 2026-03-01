@@ -446,6 +446,7 @@ img {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   animation: fadeInUp 0.8s 0.2s ease both;
+  min-height: 2em;
 }
 
 .hero-desc {
