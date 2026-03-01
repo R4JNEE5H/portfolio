@@ -153,30 +153,51 @@ canvas.addEventListener('mousemove', e => {
 });
 
 /* ===== CONTACT FORM ===== */
+
+const FLOW_URL = 'https://691b26943eb9e7d486a36b0d62af88.d2.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/aba25a9bc9424d21b4112bc9ba31203e/triggers/manual/paths/invoke?api-version=1';
+
 function handleFormSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
-  const btnText = document.getElementById('btnText');
-  const formSuccess = document.getElementById('formSuccess');
+  const btnText = document.getElementById('btnText');// comment
+  const success = document.getElementById('formSuccess');
+
+  // Build payload from form fields
+  const payload = {
+    name: document.getElementById('cName').value.trim(),
+    email: document.getElementById('cEmail').value.trim(),
+    subject: document.getElementById('cSubject').value.trim(),
+    message: document.getElementById('cMsg').value.trim()
+  };
 
   // Loading state
   btn.disabled = true;
   btnText.textContent = 'Sending...';
 
-  // Simulate send
-  setTimeout(() => {
-    btn.style.display = 'none';
-    formSuccess.classList.add('show');
-    document.getElementById('contactForm').reset();
+  fetch(FLOW_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+    .then(res => {
+      if (!res.ok) throw new Error(`Flow responded with ${res.status}`);
+      // Success
+      btn.style.display = 'none';
+      success.classList.add('show');
+      document.getElementById('contactForm').reset();
 
-    // Reset after 5s
-    setTimeout(() => {
-      btn.style.display = '';
+      setTimeout(() => {
+        btn.style.display = '';
+        btn.disabled = false;
+        btnText.textContent = 'Send Message';
+        success.classList.remove('show');
+      }, 5000);
+    })
+    .catch(err => {
+      console.error('Flow error:', err);
+      btnText.textContent = 'Failed — Try Again';
       btn.disabled = false;
-      btnText.textContent = 'Send Message';
-      formSuccess.classList.remove('show');
-    }, 5000);
-  }, 1200);
+    });
 }
 
 /* ===== SMOOTH HOVER TILT on project cards ===== */
