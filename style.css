@@ -769,24 +769,32 @@ img {
 }
 
 .skill-tag {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
-  border-radius: 99px;
-  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
   transition: var(--transition-fast);
 }
 
 .skill-tag.primary {
-  color: var(--accent-purple);
-  background: rgba(167, 139, 250, 0.08);
-  border-color: rgba(167, 139, 250, 0.2);
+  font-weight: 600;
+  color: #fff;
+  background: var(--grad-main);
+  border: none;
+  border-radius: 6px;
+  padding: 0.32rem 0.85rem;
+  box-shadow: 0 2px 10px rgba(167, 139, 250, 0.35);
 }
 
 .skill-card:hover .skill-tag {
-  border-color: rgba(167, 139, 250, 0.15);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.skill-card:hover .skill-tag.primary {
+  box-shadow: 0 3px 14px rgba(167, 139, 250, 0.5);
 }
 
 /* ===== EXPERIENCE ===== */
