@@ -301,9 +301,49 @@ img {
   transform: translateY(-2px);
 }
 
+.btn-download {
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1.5px solid rgba(34, 211, 238, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.btn-download:hover {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(34, 211, 238, 0.25);
+}
+
 .btn-full {
   width: 100%;
   justify-content: center;
+}
+
+/* Navbar Resume button */
+.nav-resume-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 1rem !important;
+  border-radius: 99px !important;
+  border: 1.5px solid rgba(34, 211, 238, 0.45) !important;
+  color: var(--accent-cyan) !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  transition: var(--transition) !important;
+  background: transparent !important;
+}
+
+.nav-resume-btn:hover {
+  background: rgba(34, 211, 238, 0.1) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 4px 16px rgba(34, 211, 238, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.nav-resume-btn::after {
+  display: none !important;
 }
 
 /* ===== GRADIENT TEXT ===== */
